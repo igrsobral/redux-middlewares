@@ -18,13 +18,18 @@ export function Counter() {
 
   const incrementValue = Number(incrementAmount) || 0;
 
+  const decrementWithThrottle = () =>({
+    ...decrement(),
+    meta: { throttle: 5000 },
+  })
+
   return (
     <div>
       <div className={styles.row}>
         <button
           className={styles.button}
           aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
+          onClick={() => dispatch(decrementWithThrottle())}
         >
           -
         </button>

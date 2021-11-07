@@ -7,7 +7,7 @@ const throttled : Map = {
     "throttle": true
 }
 
-export const throttle : Middleware = (store) => (next) => (action) => {
+export const throttle : Middleware = ({ getState, dispatch }) => (next) => (action) => {
     const time = action.meta && action.meta.throttle; 
    
     if(!time) return next(action);

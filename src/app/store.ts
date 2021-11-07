@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+import { analitycs } from './middlewares/analitycs';
 import { logger } from './middlewares/logger';
 import { throttle } from './middlewares/throttle';
 
 
-const customMiddleware = [logger, throttle];
+const customMiddleware = [logger, throttle, analitycs];
 
 export const store = configureStore({
   reducer: {
